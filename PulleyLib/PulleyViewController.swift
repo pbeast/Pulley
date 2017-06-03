@@ -25,7 +25,7 @@ import UIKit
     
     @objc func collapsedDrawerHeight() -> CGFloat
     @objc func partialRevealDrawerHeight() -> CGFloat
-    @objc func supportedDrawerPositions() -> [PulleyPosition]
+    func supportedDrawerPositions() -> NSArray
 }
 
 /**
@@ -49,7 +49,7 @@ public typealias PulleyAnimationCompletionBlock = ((_ finished: Bool) -> Void)
  - open:              When the drawer is fully open.
  - closed:            When the drawer is off-screen at the bottom of the view. Note: Users cannot close or reopen the drawer on their own. You must set this programatically
  */
-public enum PulleyPosition: Int {
+@objc public enum PulleyPosition: Int {
     
     case collapsed = 0
     case partiallyRevealed = 1
@@ -705,7 +705,7 @@ open class PulleyViewController: UIViewController {
     {
         if let drawerVCCompliant = drawerContentViewController as? PulleyDrawerViewControllerDelegate
         {
-            supportedDrawerPositions = drawerVCCompliant.supportedDrawerPositions()
+            supportedDrawerPositions = drawerVCCompliant.supportedDrawerPositions() as! [PulleyPosition]
         }
         else
         {

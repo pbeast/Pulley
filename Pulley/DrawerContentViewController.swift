@@ -43,8 +43,8 @@ extension DrawerContentViewController: PulleyDrawerViewControllerDelegate {
         return 264.0
     }
     
-    func supportedDrawerPositions() -> [PulleyPosition] {
-        return PulleyPosition.all // You can specify the drawer positions you support. This is the same as: [.open, .partiallyRevealed, .collapsed, .closed]
+    func supportedDrawerPositions() -> NSArray {
+        return NSArray (array: PulleyPosition.all) // You can specify the drawer positions you support. This is the same as: [.open, .partiallyRevealed, .collapsed, .closed]
     }
     
     func drawerPositionDidChange(drawer: PulleyViewController)
