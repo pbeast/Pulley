@@ -705,7 +705,19 @@ open class PulleyViewController: UIViewController {
     {
         if let drawerVCCompliant = drawerContentViewController as? PulleyDrawerViewControllerDelegate
         {
-            supportedDrawerPositions = drawerVCCompliant.supportedDrawerPositions() as! [PulleyPosition]
+            let tmp:NSArray = drawerVCCompliant.supportedDrawerPositions()
+            
+            supportedDrawerPositions = tmp.flatMap({
+                if $0 is NSNumber
+                {
+                    return PulleyPosition(rawValue:($0 as! NSNumber).intValue)
+                }
+                    
+                return $0 as! PulleyPosition
+            })
+            
+            
+                //as! [PulleyPosition]
         }
         else
         {
