@@ -21,11 +21,11 @@ import UIKit
 /**
  *  View controllers in the drawer can implement this to receive changes in state or provide values for the different drawer positions.
  */
-public protocol PulleyDrawerViewControllerDelegate: PulleyDelegate {
+@objc public protocol PulleyDrawerViewControllerDelegate: PulleyDelegate {
     
-    func collapsedDrawerHeight() -> CGFloat
-    func partialRevealDrawerHeight() -> CGFloat
-    func supportedDrawerPositions() -> [PulleyPosition]
+    @objc func collapsedDrawerHeight() -> CGFloat
+    @objc func partialRevealDrawerHeight() -> CGFloat
+    @objc func supportedDrawerPositions() -> [PulleyPosition]
 }
 
 /**
